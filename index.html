@@ -54,7 +54,7 @@
           
         </div><!--/span-->
         
-        <div class="col-sm-9 col-md-10 main">
+        <div ng-controller="dashboard.controller" class="col-sm-9 col-md-10 main">
           
           <!--toggle sidebar button-->
           <p class="visible-xs">
@@ -68,62 +68,63 @@
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-4 placeholder text-center">
-                <a href='#' class='button'>Songs Played</a>
+                <a ng-click="buttonClick('songs')" href='#' class='button'>Songs Played</a>
             </div>
             <div class="col-xs-6 col-sm-4 placeholder text-center">
-                <a href='#' class='button'>Albums Played</a>
+                <a ng-click="buttonClick('albums')" href='#' class='button'>Albums Played</a>
             </div>
             <div class="col-xs-6 col-sm-4 placeholder text-center">
-                <a href='#' class='button'>Artists Played</a>
+                <a ng-click="buttonClick('artists')" href='#' class='button'>Artists Played</a>
             </div>
           </div>
 
 
           <hr>
 
-          <h2 class="sub-header">Section title</h2>
+          <h2 class="sub-header">Played Information</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table ng-show="state=='songs'" class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Album</th>
-                  <th>Artist</th>
+                  <th>Name</th>
+                  <th>Played At</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
+                <tr ng-repeat="song in songPlays">
+                    <td> {{ song.songName }} </td>
+                    <td> {{song.playedAt }} </td>
                 </tr>
               </tbody>
             </table>
+            <table ng-show="state=='albumClicks'" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Album</th>
+                    <th>Played At</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="song in songPlays">
+                    <td> {{ album.albumName }} </td>
+                    <td> {{ album.playedAt }} </td>
+                </tr>
+                </tbody>
+            </table>
+            <table ng-show="state=='artistClicks'" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Artist</th>
+                    <th>Played At</th>
+                </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="song in songPlays">
+                      <td> {{ artist.artistName }} </td>
+                      <td> {{ artist.playedAt }} </td>
+                  </tr>
+                  </tbody>
+              </table>
           </div>
 
       </div><!--/row-->

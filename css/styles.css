@@ -99,7 +99,7 @@ footer {
     vertical-align: middle;
 }
 .button:hover {
-    border: 3px solid #3b484f;
+    border: 1px solid #3b484f;
     text-shadow: #51616b 0 1px 0;
     background: #505a61;
     background: -webkit-gradient(linear, left top, left bottom, from(#af13d6), to(#505a61));
